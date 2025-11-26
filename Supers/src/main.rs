@@ -12,21 +12,21 @@ fn main() {
         .next()
         .unwrap_or_else(|| "say-hello".to_string());
 
-    // 2. Variable<String> for the COMMAND (tagged as String)
+    // Variable<String> for the COMMAND (tagged as String)
     let mut command: Variable<String> = Variable::new(
         "command:String",
         command_input,
         ValueKind::String as u32,
     );
 
-    // 3. Variable<String> for the MESSAGE (also String)
+    // Variable<String> for the MESSAGE (also String)
     let mut message: Variable<String> = Variable::new(
         "message:String",
         String::new(),
         ValueKind::String as u32,
     );
 
-    // 4. Variable<i32> for a NUMBER (tagged as Int)
+    // Variable<i32> for a NUMBER (tagged as Int)
     let mut number: Variable<i32> = Variable::new(
         "number:Int",
         0,
@@ -35,7 +35,7 @@ fn main() {
 
     number.set_data(42);
 
-    // 5. Interpret the command and set message.data
+    // 2. Interpret the command and set message.data
     match command.data().as_str() {
         "say-hello" => {
             message.set_data("Hello, world!".to_string());
@@ -58,12 +58,12 @@ fn main() {
         }
     }
 
-    // 6. Use the utility helper to introspect the type info
+    // 3. Use the utility helper to introspect the type info
     debug_variable_type(&command);
     debug_variable_type(&message);
     debug_variable_type(&number);
 
-    // 7. Print the final message to the console
+    // 4. Print the final message to the console
     println!(
         "[{}] {}",
         message.label(),
